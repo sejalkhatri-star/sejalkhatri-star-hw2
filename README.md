@@ -10,14 +10,16 @@ A web-based application that converts numbers between different formats includin
 
 ## Setup
 
-1. Install the required dependencies:
+1. Install the required dependencies. We recommend following the best Python practice of a virtual environment. (This assumes Python3.)
 ```bash
-pip install -r requirements.txt
+python3 -m venv "hw2-env"
+. hw2-env/bin/activate
+pip3 install -r requirements.txt
 ```
 
 2. Run the application:
 ```bash
-python app.py
+python api/index.py
 ```
 
 3. Open your web browser and navigate to `http://localhost:5000`
