@@ -38,8 +38,11 @@ python api/index.py
 - Convert hexadecimal to text: Input "2a" with input type "hexadecimal" and output type "text"
 
 # Deploying
+LINK: https://sejalkhatri-star-hw2.vercel.app/ 
+
 The application should deploy to [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples) 
 out of the box.
+
 
 Just Add New... > Project, import the Git repository, and off you go.
 Note that Vercel's Hobby plan means your private repository needs to be
