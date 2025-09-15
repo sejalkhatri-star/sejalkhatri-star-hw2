@@ -44,6 +44,19 @@ def number_to_base64(number):
     except:
         raise ValueError("Unable to convert to base64")
 
+def number_to_ascii(number):
+    """Convert integer to ASCII character"""
+    try:
+        return chr(number)
+    except Exception:
+        raise ValueError("Invalid ASCII code")
+
+def ascii_to_number(char):
+    """Convert ASCII character to integer"""
+    if len(char) != 1:
+        raise ValueError("Input must be a single ASCII character")
+    return ord(char)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -53,8 +66,8 @@ def convert():
     try:
         data = request.get_json()
         input_value = data['input']
-        input_type = data['inputType']
-        output_type = data['outputType']
+        input_type = data.get('input_type') or data.get('inputType')
+        output_type = data.get('output_type') or data.get('outputType')
         
         # Convert input to integer based on input type
         if input_type == 'text':
@@ -69,6 +82,8 @@ def convert():
             number = int(input_value, 16)
         elif input_type == 'base64':
             number = base64_to_number(input_value)
+        elif input_type == 'ascii text':
+            number = ascii_to_number(input_value)
         else:
             raise ValueError("Invalid input type")
             
@@ -85,6 +100,8 @@ def convert():
             result = hex(number)[2:]  # Remove '0x' prefix
         elif output_type == 'base64':
             result = number_to_base64(number)
+        elif output_type == 'ascii text':
+            result = number_to_ascii(number)
         else:
             raise ValueError("Invalid output type")
             

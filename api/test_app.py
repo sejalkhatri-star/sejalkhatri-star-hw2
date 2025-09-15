@@ -76,3 +76,12 @@ def test_base64_round_trip():
         b64 = number_to_base64(num)
         decoded = base64_to_number(b64)
         assert decoded == num
+
+def test_hex_to_ascii_text(client):
+    res = client.post("/convert", json={
+        "input": "2a",
+        "input_type": "hexadecimal",
+        "output_type": "ascii text"
+    })
+    data = res.get_json()
+    assert data["result"] == "*"
